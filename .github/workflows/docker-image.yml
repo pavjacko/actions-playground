@@ -1,7 +1,7 @@
 name: Docker Image CI
 
 env:
-  TAG: "$(date +%s)"
+  TAG: $(date +%s)
   VERSION: "2.6.3"
 
 on:
