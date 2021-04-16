@@ -1,7 +1,6 @@
 name: Docker Image CI
 
 env:
-  TAG: $(date +%s)
   VERSION: "2.6.3"
 
 on:
@@ -18,5 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Get current timestamp
+        id: timestamp
+        run: echo "::set-output name=date::$(date +%s)"
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag "my-image-name:$VERSION-$TAG"
+      run: docker build . --file Dockerfile --tag "my-image-name:$VERSION-${{ steps.date.outputs.timestamp }}"
