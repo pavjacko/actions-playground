@@ -18,6 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Get current timestamp
-      run: echo "NOW::$(date +%s)" >> $GITHUB_ENV
+      run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag "my-image-name:$VERSION-$NOW"
+      run: docker build . --file Dockerfile --tag "my-image-name:$VERSION-$TIMESTAMP"
